@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  php:
+    user: "${UID}:${GID}"
+    build:
+      context: .
+    restart: unless-stopped
+    volumes:
+      - php_socket:/var/run/php
+
