@@ -54,12 +54,14 @@ final class Storage
 
     private static function isDeleted(string $key): bool
     {
+        // @todo how about storing keys in memory
         $lines = self::openFileAsLines($key, self::DELETED_POSTFIX);
 
         if (null === $lines) {
             false;
         }
 
+        // @todo use more optimized for search structure, ex. binary tree or skip list
         foreach ($lines as $index => $line) {
             if ($key === $line) {
                 return true;
